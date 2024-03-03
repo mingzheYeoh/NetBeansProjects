@@ -34,7 +34,6 @@ public class DetectSource extends JFrame{
                JOptionPane.showMessageDialog(null, "Cancel button clicked");
            }
         }
-    
     }
     
     public static void main(String[] args) {
