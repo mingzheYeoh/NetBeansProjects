@@ -8,7 +8,7 @@ public class ProgrammeDA {
     private String host = "jdbc:derby://localhost:1527/collegedb";
     private String user = "nbuser";
     private String password = "nbuser";
-    private String tableName = "Programme";
+    private String tableName = "SA.Programme";
     private Connection conn;
     private PreparedStatement stmt;
     
