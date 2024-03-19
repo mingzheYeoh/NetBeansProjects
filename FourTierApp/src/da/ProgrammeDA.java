@@ -16,6 +16,46 @@ public class ProgrammeDA {
         createConnection();
     }
     
+    public void addRecord(Programme programme){
+        try{
+            String insertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?)";
+            stmt = conn.prepareStatement(insertStr);
+            stmt.setString(1, programme.getCode());
+            stmt.setString(2, programme.getName());
+            stmt.setString(3, programme.getFaculty());
+            stmt.executeUpdate();
+
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void updateRecord(Programme programme){
+        try{
+            String updateStr = "UPDATE" + tableName + "SET NAME = ?, Faculty = ?, WHERE CODE = ?";
+            stmt = conn.prepareStatement(updateStr);
+            stmt.setString(1, programme.getName());
+            stmt.setString(2, programme.getFaculty());
+            stmt.setString(3, programme.getCode());
+            stmt.executeUpdate();
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void deleteRecord(Programme programme){
+        try{
+            String deleteStr = "DELETE FROM" + tableName + "WHERE CODE = ?";
+            stmt = conn.prepareStatement(deleteStr);
+            stmt.setString(1, programme.getCode());
+            stmt.executeUpdate();
+            
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
     public Programme getRecord(String code) {
         String queryStr = "SELECT * FROM " + tableName + " WHERE Code = ?";
         Programme programme = null;
