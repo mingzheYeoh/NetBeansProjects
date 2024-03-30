@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet>
+        <servlet-name>SimpleAddStudent</servlet-name>
+        <servlet-class>servlets.SimpleAddStudent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetStudentDetails</servlet-name>
+        <servlet-class>servlets.GetStudentDetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComputeLoanPayment</servlet-name>
+        <servlet-class>servlets.ComputeLoanPayment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SimpleAddStudent</servlet-name>
+        <url-pattern>/SimpleAddStudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetStudentDetails</servlet-name>
+        <url-pattern>/GetStudentDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComputeLoanPayment</servlet-name>
+        <url-pattern>/ComputeLoanPayment</url-pattern>
+    </servlet-mapping>
+</web-app>

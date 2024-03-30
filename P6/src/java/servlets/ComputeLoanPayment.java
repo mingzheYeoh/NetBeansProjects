@@ -1,0 +1,54 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
+package servlets;
+
+import domain.Loan;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ *
+ * @author mingzhe
+ */
+public class ComputeLoanPayment extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html");
+        PrintWriter out = resp.getWriter();
+        
+        String amtStr = req.getParameter("amount");
+        String rateStr = req.getParameter("rate");
+        String durationStr = req.getParameter("duration");
+        
+        if (amtStr.length() == 0 || rateStr.length() == 0 || durationStr.length() == 0){
+            out.println("Require all infos");
+        }else{
+            double amt = Double.parseDouble(amtStr);
+            double rate = Double.parseDouble(rateStr);
+            int duration = Integer.parseInt(durationStr);
+            
+            Loan loan = new Loan(rate, duration, amt);
+            
+            //Ask for information
+            out.println("You entered the following data:");
+            out.println("<p>Loan Amount: RM" + String.format("%.2f", amt) + "</p>");
+            out.println("<br> Annual interest rate: " + String.format("%.2f", rate));
+            out.println("<br> Number of years: " + duration);
+            
+            //Set the action for processing
+            out.println("<p><form method=\"post\" action=\"ComputeLoanPayment\"></p>");
+            out.println("<p><input type=\"submit\" value=\"Confirm\"></p>");
+            out.println("</form>");
+            out.close();
+        }
+    }
+
+    
+}
