@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add new student</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Add new student</h3>
+        <form action="Q4Servlet">
+            <p>
+                <label>Student ID</label>
+                <input type="text" name="id" size="12">
+            </p>
+            <p>
+                <label>IC Number</label>
+                <input type="text" name="ic" size="12">
+            </p>
+            <p>
+                <label>Name</label>
+                <input type="text" name="name" size="40">
+            </p>
+            <p>
+                <label>Level</label>
+                <input type="radio" name="level" value="F">Foundation
+                <input type="radio" name="level" value="D">Diploma
+                <input type="radio" name="level" value="B">Bachelor
+            </p>
+            <p>
+                <label>Programme</label>
+                <select name="progCode">
+                    <option value="CO">Computer Science and Computer Mathematics</option>
+                    <option value="IA">Information Systems Engineering</option>
+                    <option value="IB">Business Information Systems</option>
+                </select>
+
+            </p>
+            <p>
+                <label>Year of Study</label>
+                <input type="text" name="yr" size="1">
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+            </p>
+
+        </form>
+    </body>
+</html>

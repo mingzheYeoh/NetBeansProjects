@@ -12,6 +12,14 @@
         <servlet-name>ComputeLoanPayment</servlet-name>
         <servlet-class>servlets.ComputeLoanPayment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Q4Servlet</servlet-name>
+        <servlet-class>servlets.Q4Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThirdServlet</servlet-name>
+        <servlet-class>servlets.ThirdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SimpleAddStudent</servlet-name>
         <url-pattern>/SimpleAddStudent</url-pattern>
@@ -23,5 +31,13 @@
     <servlet-mapping>
         <servlet-name>ComputeLoanPayment</servlet-name>
         <url-pattern>/ComputeLoanPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Q4Servlet</servlet-name>
+        <url-pattern>/Q4Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThirdServlet</servlet-name>
+        <url-pattern>/ThirdServlet</url-pattern>
     </servlet-mapping>
 </web-app>
