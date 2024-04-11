@@ -1,41 +1,27 @@
 package controller;
 
-import jakarta.annotation.Resource;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.UserTransaction;
-import model.Item;
-import model.ItemService;
+import model.*;
 import java.io.*;
+import java.util.List;
 import java.util.logging.*;
+import javax.persistence.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
 
-public class AddItem extends HttpServlet {
+public class LoadItemList extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
-    @Resource
-    UserTransaction utx;
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String code = request.getParameter("code");
-            String description = request.getParameter("description");
-            double price = Double.parseDouble(request.getParameter("price"));
-            
-            Item item = new Item(code, description, price);
             ItemService itemService = new ItemService(em);
-            utx.begin();
-            boolean success = itemService.addItem(item);
-            utx.commit();
+            List<Item> itemList = itemService.findAll();
+            
             HttpSession session = request.getSession();
-            session.setAttribute("success", success);
-            response.sendRedirect("AddConfirm.jsp");
+            session.setAttribute("itemList", itemList);
+            response.sendRedirect("DisplayItemList.jsp");
         } catch (Exception ex) {
             Logger.getLogger(AddItem.class.getName()).log(Level.SEVERE, null, ex);
         } 

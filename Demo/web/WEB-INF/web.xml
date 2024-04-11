@@ -8,6 +8,18 @@
         <servlet-name>AddItem</servlet-name>
         <servlet-class>controller.AddItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteItem</servlet-name>
+        <servlet-class>controller.deleteItem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadItemList</servlet-name>
+        <servlet-class>controller.LoadItemList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchItem</servlet-name>
+        <servlet-class>controller.SearchItem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>View</servlet-name>
         <url-pattern>/View</url-pattern>
@@ -15,5 +27,17 @@
     <servlet-mapping>
         <servlet-name>AddItem</servlet-name>
         <url-pattern>/AddItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteItem</servlet-name>
+        <url-pattern>/deleteItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadItemList</servlet-name>
+        <url-pattern>/LoadItemList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchItem</servlet-name>
+        <url-pattern>/SearchItem</url-pattern>
     </servlet-mapping>
 </web-app>

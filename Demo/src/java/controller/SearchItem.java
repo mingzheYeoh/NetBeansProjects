@@ -1,44 +1,38 @@
 package controller;
 
-import jakarta.annotation.Resource;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import jakarta.transaction.UserTransaction;
 import model.Item;
 import model.ItemService;
 import java.io.*;
 import java.util.logging.*;
+import javax.persistence.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
 
-public class AddItem extends HttpServlet {
+public class SearchItem extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
-    @Resource
-    UserTransaction utx;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String code = request.getParameter("code");
-            String description = request.getParameter("description");
-            double price = Double.parseDouble(request.getParameter("price"));
-            
-            Item item = new Item(code, description, price);
             ItemService itemService = new ItemService(em);
-            utx.begin();
-            boolean success = itemService.addItem(item);
-            utx.commit();
             HttpSession session = request.getSession();
-            session.setAttribute("success", success);
-            response.sendRedirect("AddConfirm.jsp");
+            String code = (String) session.getAttribute("code");
+            String button = (String) session.getAttribute("button");
+
+            Item item = itemService.findItemByCode(code);
+
+            session.setAttribute("item", item);
+            if (button.equals("Delete")) {
+                response.sendRedirect("DeleteConfirmation.jsp");
+            } else {
+                response.sendRedirect("UpdateConfirmation.jsp");
+            }
+  
         } catch (Exception ex) {
             Logger.getLogger(AddItem.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
