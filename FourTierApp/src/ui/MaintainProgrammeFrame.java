@@ -31,6 +31,11 @@ public class MaintainProgrammeFrame extends JFrame {
         jpCenter.add(jtfFaculty);
         add(jpCenter);
 
+        jbtAdd.setMnemonic('C');
+        jbtRetrieve.setMnemonic('R');
+        jbtUpdate.setMnemonic('U');
+        jbtDelete.setMnemonic('D');
+        
         JPanel jpSouth = new JPanel();
         jpSouth.add(jbtAdd);
         jpSouth.add(jbtRetrieve);
