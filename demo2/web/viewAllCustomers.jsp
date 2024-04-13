@@ -25,7 +25,7 @@
 <body>
     <h1>All Customers</h1>
     <% 
-    List<DB_Model.Customerregister> customers = (List<DB_Model.Customerregister>)request.getAttribute("customers");
+    List<DB_Model.CustomerRegister> customers = (List<DB_Model.CustomerRegister>)request.getAttribute("customers");
     if (customers != null) {
     %>
     <table>
@@ -40,7 +40,7 @@
         </thead>
         <tbody>
             <% 
-            for (DB_Model.Customerregister customer : customers) { 
+            for (DB_Model.CustomerRegister customer : customers) { 
             %>
             <tr>
                 <td><%= customer.getCustomerId() %></td>

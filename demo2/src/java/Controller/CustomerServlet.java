@@ -1,7 +1,7 @@
 package Controller;
 
 import DAO.CustomerRegisterService;
-import DB_Model.Customerregister;
+import DB_Model.CustomerRegister;
 import jakarta.annotation.Resource;
 import jakarta.persistence.*;
 import jakarta.servlet.ServletException;
@@ -59,9 +59,9 @@ public class CustomerServlet extends HttpServlet {
     }
 
     private void viewAllCustomers(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        List<Customerregister> customers = customerService.findAllCustomers();
+        List<CustomerRegister> customers = customerService.findAllCustomers();
         request.setAttribute("customers", customers);
-        request.getRequestDispatcher("viewAllCustomers.jsp").forward(request, response);
+        request.getRequestDispatcher("/viewAllCustomers.jsp").forward(request, response);
     }
 
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -70,7 +70,7 @@ public class CustomerServlet extends HttpServlet {
         String password = request.getParameter("password");
         LocalDate joinedDate = LocalDate.parse(request.getParameter("joinedDate"));
 
-        Customerregister customer = new Customerregister();
+        CustomerRegister customer = new CustomerRegister();
         customer.setCustomerName(name);
         customer.setCustomerEmail(email);
         customer.setCustomerPassword(password);
@@ -99,7 +99,7 @@ public class CustomerServlet extends HttpServlet {
         String password = request.getParameter("password");
         LocalDate joinedDate = LocalDate.parse(request.getParameter("joinedDate"));
 
-        Customerregister customer = new Customerregister();
+        CustomerRegister customer = new CustomerRegister();
         customer.setCustomerId(customerId);
         customer.setCustomerName(name);
         customer.setCustomerEmail(email);

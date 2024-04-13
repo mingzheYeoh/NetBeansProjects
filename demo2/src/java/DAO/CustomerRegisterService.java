@@ -1,6 +1,6 @@
 package DAO;
 
-import DB_Model.Customerregister;
+import DB_Model.CustomerRegister;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,7 +15,7 @@ public class CustomerRegisterService {
         this.mgr = entityManager;
     }
 
-    public boolean addCustomer(Customerregister customer) {
+    public boolean addCustomer(CustomerRegister customer) {
         try {
             mgr.getTransaction().begin();
             mgr.persist(customer);
@@ -28,17 +28,17 @@ public class CustomerRegisterService {
         }
     }
 
-    public Customerregister findCustomerById(int customerId) {
-        return mgr.find(Customerregister.class, customerId);
+    public CustomerRegister findCustomerById(int customerId) {
+        return mgr.find(CustomerRegister.class, customerId);
     }
 
-    public List<Customerregister> findAllCustomers() {
-        return mgr.createNamedQuery("CustomerRegister.findAll", Customerregister.class).getResultList();
+    public List<CustomerRegister> findAllCustomers() {
+        return mgr.createNamedQuery("CustomerRegister.findAll", CustomerRegister.class).getResultList();
     }
 
-    public boolean updateCustomer(Customerregister customer) {
+    public boolean updateCustomer(CustomerRegister customer) {
         try {
-            Customerregister existingCustomer = findCustomerById(customer.getCustomerId());
+            CustomerRegister existingCustomer = findCustomerById(customer.getCustomerId());
             if (existingCustomer != null) {
                 mgr.getTransaction().begin();
                 existingCustomer.setCustomerName(customer.getCustomerName());
@@ -58,7 +58,7 @@ public class CustomerRegisterService {
     
     public boolean deleteCustomer(int customerId) {
         try {
-            Customerregister customer = findCustomerById(customerId);
+            CustomerRegister customer = findCustomerById(customerId);
             if (customer != null) {
                 mgr.getTransaction().begin();
                 mgr.remove(customer);
