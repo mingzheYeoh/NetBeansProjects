@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Customer CRUD Operations</h1>
-    <form action="CustomerServlet" method="post">
+    <form action="../CustomerServlet" method="post">
         <h2>Add Customer:</h2>
         Name: <input type="text" name="name"><br>
         Email: <input type="email" name="email"><br>
@@ -18,7 +18,7 @@
     </form>
     
     <h2>Update Customer:</h2>
-    <form action="CustomerServlet" method="post">
+    <form action="../CustomerServlet" method="post">
         Customer ID: <input type="number" name="customerId"><br>
         Name: <input type="text" name="name"><br>
         Email: <input type="email" name="email"><br>
@@ -29,14 +29,14 @@
     </form>
     
     <h2>Delete Customer:</h2>
-    <form action="CustomerServlet" method="post">
+    <form action="../CustomerServlet" method="post">
         Customer ID: <input type="number" name="customerId"><br>
         <input type="hidden" name="action" value="delete">
         <input type="submit" value="Delete Customer">
     </form>
     
     <h2>View All Customers:</h2>
-    <form action="CustomerServlet" method="get">
+    <form action="CustomerServlet">
         <input type="hidden" name="action" value="viewAll">
         <input type="submit" value="View All Customers">
     </form>
