@@ -11,9 +11,20 @@ public class DisplayStudentName {
     public static void main(String[] args) {
         String[] students = {"Clark Kent", "Natalie Teeger", "Adrian Monk", "Kevin Rudd"};
         
-        String input = JOptionPane.showInputDialog("Enter index[1.." + students.length + "]");
+        try{
+            String input = JOptionPane.showInputDialog("Enter index[1.." + students.length + "]");
+            int index = Integer.parseInt(input) - 1;
+            
+            if (index < 0 | index > students.length){
+                throw new IndexOutOfBoundsException();
+            }
+            JOptionPane.showMessageDialog(null, "Student#" + input + ":" + students[index]);
+       
+        }catch (IndexOutOfBoundsException ex){
+            JOptionPane.showMessageDialog(null, "Array Index Out of Bound", "ERROR", JOptionPane.ERROR_MESSAGE);
         
-        int index = Integer.parseInt(input) - 1;
-        JOptionPane.showMessageDialog(null, "Student#" + input + ":" + students[index]);
+        }catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, "Incorrect input: an integer is required.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
