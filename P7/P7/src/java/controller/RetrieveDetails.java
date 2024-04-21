@@ -42,7 +42,7 @@ public class RetrieveDetails extends HttpServlet {
            response.sendRedirect("EnterSubject.jsp");
            
        }catch(Exception ex){
-           
+           ex.getMessage();
        }
     }
 
